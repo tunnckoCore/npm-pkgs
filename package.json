@@ -1,0 +1,33 @@
+{
+  "name": "npm-pkgs",
+  "version": "0.0.0",
+  "description": "List user`s npm packages from the npmjs.com",
+  "scripts": {
+    "lint": "jshint index.js && jscs index.js --reporter inline",
+    "test": "mocha",
+    "test-cov": "istanbul cover _mocha",
+    "test-travis": "istanbul cover _mocha --report lcovonly"
+  },
+  "author": {
+    "name": "Charlike Mike Reagent",
+    "email": "mameto_100@mail.bg",
+    "url": "https://github.com/tunnckoCore"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tunnckoCore/npm-pkgs.git"
+  },
+  "keywords": [],
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/tunnckoCore/npm-pkgs/blob/master/license.md"
+  },
+  "dependencies": {
+    "cheerio": "~0.19.0",
+    "got": "~2.5.0"
+  },
+  "devDependencies": {
+    "istanbul-harmony": "~0.3.1",
+    "mocha": "~2.2.1"
+  }
+}
