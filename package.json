@@ -1,6 +1,6 @@
 {
   "name": "npm-pkgs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "List user`s npm packages from the npmjs.com website profile. API and CLI.",
   "scripts": {
     "lint": "jshint index.js && jscs index.js --reporter inline",
