@@ -6,6 +6,7 @@
 ```
 npm i --save npm-pkgs
 npm test
+npm-pkgs --help
 ```
 
 
@@ -30,6 +31,15 @@ npmPkgs('tunnckocore', function _cb(err, res) {
   console.log(res);
   //=> ['list', 'of', 'user', 'packages']
 });
+```
+
+
+## CLI
+> run `npm-pkgs --help` or try this one
+
+```
+npm i -g npm-pkgs
+npm-pkgs tunnckocore
 ```
 
 
