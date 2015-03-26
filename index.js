@@ -11,19 +11,19 @@ var got = require('got');
 var cheerio = require('cheerio');
 
 module.exports = function npmPkgs(username, callback) {
-  if (!username) {
-    throw new Error('[npm-pkgs] expect at least 2 arguments');
+  if (typeof username !== 'string') {
+    throw new TypeError('[npm-pkgs] expect `username` to be string');
   }
-  if (typeof username !== 'string' && !username.length) {
-    throw new TypeError('[npm-pkgs] expect `username` be non-empty string');
+  if (username.length === 0) {
+    throw new Error('[npm-pkgs] expect `username` to be non empty string');
   }
   if (typeof callback !== 'function') {
-    throw new TypeError('[npm-pkgs] expect 2nd argument be function');
+    throw new TypeError('[npm-pkgs] expect `callback` to be function');
   }
 
   var pkgs = [];
 
-  return got.get('https://www.npmjs.com/~' + username, function _cb(err, res) {
+  got.get('https://www.npmjs.com/~' + username, function _cb(err, res) {
     if (err) {
       callback(err);
       return;
