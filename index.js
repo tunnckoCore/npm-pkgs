@@ -7,6 +7,7 @@
 
 'use strict';
 
+var is = require('is-kindof');
 var got = require('got');
 var cheerio = require('cheerio');
 
@@ -33,20 +34,20 @@ var cheerio = require('cheerio');
  * @api public
  */
 module.exports = function npmPkgs(username, callback) {
-  if (typeof username !== 'string') {
+  if (!is.string(username)) {
     throw new TypeError('[npm-pkgs] expect `username` to be string');
   }
   if (username.length === 0) {
     throw new Error('[npm-pkgs] expect `username` to be non empty string');
   }
-  if (typeof callback !== 'function') {
+  if (!is.function(callback)) {
     throw new TypeError('[npm-pkgs] expect `callback` to be function');
   }
 
   var pkgs = [];
 
   got.get('https://www.npmjs.com/~' + username, function _cb(err, res) {
-    if (err) {
+    if (!is.null(err)) {
       callback(err);
       return;
     }
