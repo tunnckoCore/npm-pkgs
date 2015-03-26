@@ -17,7 +17,19 @@
     "type": "git",
     "url": "git://github.com/tunnckoCore/npm-pkgs.git"
   },
-  "keywords": [],
+  "keywords": [
+    "cli",
+    "get",
+    "helper",
+    "list",
+    "npm",
+    "packages",
+    "pkg",
+    "pkgs",
+    "profile",
+    "user",
+    "utils"
+  ],
   "license": {
     "type": "MIT",
     "url": "https://github.com/tunnckoCore/npm-pkgs/blob/master/license.md"
