@@ -9,11 +9,27 @@ npm test
 ```
 
 
-## Usage
+## API
 > For more use-cases see the [tests](./test.js)
 
+### [npmPkgs](./index.js#L35)
+> List packages of the given user
+
+- `<username>` **{String}**  non emptry string, npm username
+- `<callback>` **{Function}** node-style callback `(err, res)`
+
+**Example**
 ```js
 var npmPkgs = require('npm-pkgs');
+
+npmPkgs('tunnckocore', function _cb(err, res) {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log(res);
+  //=> ['list', 'of', 'user', 'packages']
+});
 ```
 
 

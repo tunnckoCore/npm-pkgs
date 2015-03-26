@@ -10,6 +10,28 @@
 var got = require('got');
 var cheerio = require('cheerio');
 
+/**
+ * List packages of the given user
+ *
+ * **Example**
+ * ```js
+ * var npmPkgs = require('npm-pkgs');
+ *
+ * npmPkgs('tunnckocore', function _cb(err, res) {
+ *   if (err) {
+ *     console.error(err);
+ *     return;
+ *   }
+ *   console.log(res);
+ *   //=> ['list', 'of', 'user', 'packages']
+ * });
+ * ```
+ *
+ * @name   npmPkgs
+ * @param  {String}   `<username>` non emptry string, npm username
+ * @param  {Function} `<callback>` node-style callback `(err, res)`
+ * @api public
+ */
 module.exports = function npmPkgs(username, callback) {
   if (typeof username !== 'string') {
     throw new TypeError('[npm-pkgs] expect `username` to be string');
