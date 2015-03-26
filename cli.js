@@ -38,7 +38,7 @@ if (is.array(cli.input) && !cli.input.length) {
   exit(1);
 }
 console.log('  %s %s', symbols.info, chalk.gray('sending request'));
-console.log('  %s %s', symbols.info, chalk.gray('please white, may take few seconds...'));
+console.log('  %s %s', symbols.info, chalk.gray('please wait, may take few seconds...'));
 
 npmPkgs(String(cli.input[0]), function _cb(err, res) {
   if (!is.null(err)) {
