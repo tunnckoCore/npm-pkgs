@@ -52,6 +52,7 @@ describe('npm-pkgs:', function() {
     npmPkgs('tunnckocore', function _cb(err, res) {
       assert.ifError(err);
       assert.strictEqual(res.length > 90, true);
+      assert.strictEqual(Array.isArray(res), true);
       done();
     });
   });
