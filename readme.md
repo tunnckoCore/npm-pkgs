@@ -40,6 +40,14 @@ npmPkgs('tunnckocore', function _cb(err, res) {
 ```
 npm i -g npm-pkgs
 npm-pkgs tunnckocore
+  ℹ sending request
+  ℹ please white, may take few seconds...
+  ===================================
+  ✔ anonymize-ip
+  ✔ async-exec-cmd
+  ✔ catchy
+  ✔ char-code-names
+  ...
 ```
 
 
