@@ -11,8 +11,11 @@ var is = require('is-kindof');
 var got = require('got');
 var cheerio = require('cheerio');
 
+var url = 'https://www.npmjs.com/~';
+var selector = '.bullet-free';
+
 /**
- * List packages of the given user
+ * List packages of the given [npmjs.com](http://npm.im) user
  *
  * **Example**
  * ```js
@@ -46,17 +49,18 @@ module.exports = function npmPkgs(username, callback) {
 
   var pkgs = [];
 
-  got.get('https://www.npmjs.com/~' + username, function _cb(err, res) {
+  got.get(url + username, function _cb(err, res) {
     if (!is.null(err)) {
       callback(err);
       return;
     }
 
     var $ = cheerio.load(res);
-    $('.bullet-free').first().find('li a')
-    .each(function _defaultIterator() {
+
+    $(selector).first().find('li a').each(function _defaultIterator() {
       pkgs.push($(this).attr('href').trim().split('/package/')[1]);
     });
+
     callback(null, pkgs);
   });
 };
