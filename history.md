@@ -1,5 +1,10 @@
 
 
+## v1.0.1 / March 28, 2015
+- Release v1.0.1 / npm@v1.0.1
+- update checks
+- update cli
+
 ## v1.0.0 / March 27, 2015
 - Release v1.0.0 / npm@v1.0.0
 - just was waiting for coveralls and travis sync and bugs
