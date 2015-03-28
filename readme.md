@@ -1,6 +1,6 @@
 ## [![npm][npmjs-img]][npmjs-url] [![mit license][license-img]][license-url] [![build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![deps status][daviddm-img]][daviddm-url]
 
-> List user`s npm packages from the npmjs.com website profile. API and CLI.
+> List user`s npm packages from the [npmjs.com](http://npm.im) website profile. API and CLI.
 
 ## Install
 ```
@@ -14,7 +14,7 @@ npm-pkgs --help
 > For more use-cases see the [tests](./test.js)
 
 ### [npmPkgs](./index.js#L35)
-> List packages of the given user
+> List packages of the given [npmjs.com](http://npm.im) user
 
 - `<username>` **{String}**  non emptry string, npm username
 - `<callback>` **{Function}** node-style callback `(err, res)`
@@ -39,15 +39,22 @@ npmPkgs('tunnckocore', function _cb(err, res) {
 
 ```
 npm i -g npm-pkgs
+
 npm-pkgs tunnckocore
-  ℹ sending request
-  ℹ please wait, may take few seconds...
-  ===================================
+
+  Aloha, master!
+
+  ℹ Please wait a moment...
+  ℹ We fetching data from https://www.npmjs.com
+
   ✔ anonymize-ip
   ✔ async-exec-cmd
   ✔ catchy
   ✔ char-code-names
   ...
+
+  ✔ 96 packages by tunnckocore
+
 ```
 
 
@@ -90,4 +97,4 @@ Released under the [`MIT`][license-url] license.
 
 ***
 
-_Powered and automated by [kdf](https://github.com/tunnckoCore), March 26, 2015_
+_Powered and automated by [kdf](https://github.com/tunnckoCore), March 28, 2015_
