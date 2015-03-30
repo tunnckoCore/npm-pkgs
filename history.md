@@ -1,5 +1,9 @@
 
 
+## v1.0.2 / March 30, 2015
+- Release v1.0.2 / npm@v1.0.2
+- fix cli, replace `is-kindof` with `assert-kindof`
+
 ## v1.0.1 / March 28, 2015
 - Release v1.0.1 / npm@v1.0.1
 - update checks
