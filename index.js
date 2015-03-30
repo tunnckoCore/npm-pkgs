@@ -7,7 +7,7 @@
 
 'use strict';
 
-var is = require('is-kindof');
+var is = require('assert-kindof');
 var got = require('got');
 var cheerio = require('cheerio');
 
@@ -37,20 +37,16 @@ var selector = '.bullet-free';
  * @api public
  */
 module.exports = function npmPkgs(username, callback) {
-  if (!is.string(username)) {
-    throw new TypeError('[npm-pkgs] expect `username` to be string');
-  }
+  is.string(username);
   if (username.length === 0) {
     throw new Error('[npm-pkgs] expect `username` to be non empty string');
   }
-  if (!is.function(callback)) {
-    throw new TypeError('[npm-pkgs] expect `callback` to be function');
-  }
+  is.function(callback);
 
   var pkgs = [];
 
   got.get(url + username, function _cb(err, res) {
-    if (!is.null(err)) {
+    if (!is.kindof.null(err)) {
       callback(err);
       return;
     }

@@ -7,6 +7,7 @@
 
 'use strict';
 
+var is = require('assert-kindof');
 var assert = require('assert');
 var npmPkgs = require('./index');
 
@@ -14,7 +15,18 @@ describe('npm-pkgs:', function() {
   it('should throw TypeError when `username` is not a string', function(done) {
     assert.throws(function fixture() {
       npmPkgs({one: 'two'});
-    }, /expect `username` to be string/);
+    }, /to be string, but object given/);
+
+    try {
+      npmPkgs({one: 'two'});
+    } catch(e) {
+      is.object(e);
+      is.number(e.line);
+      assert.strictEqual(e.actual, 'object');
+      assert.strictEqual(e.expected, 'string');
+      assert.strictEqual(e.problem, 'actual !== expected');
+      assert.strictEqual(/to be string, but object given/.test(e.message), true);
+    }
 
     assert.throws(function fixture() {
       npmPkgs({one: 'two'});
@@ -38,7 +50,18 @@ describe('npm-pkgs:', function() {
   it('should throw TypeError when `callback` is not a function', function(done) {
     assert.throws(function fixture() {
       npmPkgs('tunnckocore', [1, 2, 3]);
-    }, /expect `callback` to be/);
+    }, /to be function, but array given/);
+
+    try {
+      npmPkgs('tunnckocore', [1, 2, 3]);
+    } catch(e) {
+      is.object(e);
+      is.number(e.line);
+      assert.strictEqual(e.actual, 'array');
+      assert.strictEqual(e.expected, 'function');
+      assert.strictEqual(e.problem, 'actual !== expected');
+      assert.strictEqual(/to be function, but array given/.test(e.message), true);
+    }
 
     assert.throws(function fixture() {
       npmPkgs('tunnckocore', [1, 2, 3]);
@@ -51,8 +74,9 @@ describe('npm-pkgs:', function() {
 
     npmPkgs('tunnckocore', function _cb(err, res) {
       assert.ifError(err);
+      is.array(res);
+      is.number(res.length);
       assert.strictEqual(res.length > 90, true);
-      assert.strictEqual(Array.isArray(res), true);
       done();
     });
   });
@@ -61,9 +85,11 @@ describe('npm-pkgs:', function() {
     this.timeout(30000);
 
     npmPkgs('fjk43hkjhhhhhhhhhhhhhhhkjgg3k4g234', function _cb(err, res) {
+      is.error(err);
+      is.number(err.code);
+      is.undefined(res);
       assert.strictEqual(err instanceof Error, true);
       assert.strictEqual(err.code, 404);
-      assert.strictEqual(res, undefined);
       done();
     });
   });

@@ -8,7 +8,7 @@
 
 'use strict';
 
-var is = require('is-kindof');
+var is = require('assert-kindof');
 var meow = require('meow');
 var chalk = require('chalk');
 var npmPkgs = require('./index');
@@ -33,7 +33,7 @@ var cli = meow({
   */}))
 });
 
-if (is.array(cli.input) && !cli.input.length) {
+if (is.kindof.array(cli.input) && !cli.input.length) {
   console.error();
   console.error(chalk.red('  Whoaaa!'));
   console.error();
@@ -52,8 +52,8 @@ console.log();
 
 var username = String(cli.input[0]);
 
-npmPkgs(username, function _cb(err, cnt) {
-  if (!is.null(err)) {
+npmPkgs(username, function _cb(err, res) {
+  if (!is.kindof.null(err)) {
     console.error('  %s %s', log.error, chalk.red(err.message));
     console.error();
     exit(1);
