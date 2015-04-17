@@ -1,5 +1,12 @@
 
 
+## v2.0.0 / April 17, 2015
+- Release v2.0.0 / npm@v2.0.0
+- add related section to readme
+- fix last test, b/c got@v2.7.0
+- simplify travis.yml
+- externalize cli, close #1
+
 ## v1.0.2 / March 30, 2015
 - Release v1.0.2 / npm@v1.0.2
 - fix cli, replace `is-kindof` with `assert-kindof`
