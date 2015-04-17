@@ -34,6 +34,17 @@ npmPkgs('tunnckocore', function _cb(err, res) {
 ```
 
 
+## Related
+- [npm-pkgs](https://github.com/tunnckoCore/npm-pkgs): List user npm packages from the [npmjs.com](https://npmjs.com)!
+- [npm-pkgs-cli](https://github.com/tunnckoCore/npm-pkgs-cli): CLI for listing and filtering user npm packages from the [npmjs.com](https://npmjs.com)!
+- [npm-pkgs-count](https://github.com/tunnckoCore/npm-pkgs-count): Count npm user packages from [npmjs.com](https://npmjs.com)! API and CLI.
+- [npm-pkgs-filter](https://github.com/tunnckoCore/npm-pkgs-filter): Filter the list of user npm packages from the [npmjs.com](https://npmjs.com) using glob pattern, function, array or regex.
+- [npm-related](https://github.com/tunnckoCore/npm-related): Thin wrapper on top of `helper-related` for generating a list of links to the homepages of related NPM projects.
+- [micromatch](https://github.com/jonschlinkert/micromatch): Glob matching for javascript/node.js. A drop-in replacement and faster alternative to minimatch and multimatch. Just use `micromatch.isMatch()` instead of `minimatch()`, or use `micromatch()` instead of `multimatch()`.
+- [is-match](https://github.com/jonschlinkert/is-match): Create a matching function from a glob pattern, regex, string, array or function.
+- [is-missing](https://github.com/tunnckoCore/is-missing): Check that given `name` or `user/repo` exists in npm registry or in github as organization/user repository.
+
+
 ## Author
 **Charlike Mike Reagent**
 + [gratipay/tunnckoCore][author-gratipay]
