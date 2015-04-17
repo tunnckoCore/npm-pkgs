@@ -1,6 +1,6 @@
 {
   "name": "npm-pkgs",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "List user npm packages from the [npmjs.com](http://npm.im)!",
   "scripts": {
     "lint": "jshint index.js && jscs index.js --reporter inline",
