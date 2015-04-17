@@ -13,12 +13,12 @@ var npmPkgs = require('./index');
 
 describe('npm-pkgs:', function() {
   it('should throw TypeError when `username` is not a string', function(done) {
-    assert.throws(function fixture() {
+    function fixture() {
       npmPkgs({one: 'two'});
-    }, /to be string, but object given/);
+    }
 
     try {
-      npmPkgs({one: 'two'});
+      fixture();
     } catch(e) {
       is.object(e);
       is.number(e.line);
@@ -26,34 +26,30 @@ describe('npm-pkgs:', function() {
       assert.strictEqual(e.expected, 'string');
       assert.strictEqual(e.problem, 'actual !== expected');
       assert.strictEqual(/to be string, but object given/.test(e.message), true);
+      assert.throws(fixture, /to be string, but object given/);
+      assert.throws(fixture, TypeError);
+      done();
     }
-
-    assert.throws(function fixture() {
-      npmPkgs({one: 'two'});
-    }, TypeError);
-    done();
   });
 
 
   it('should throw Error when `username` is an empty string or array', function(done) {
-    assert.throws(function fixture() {
+    function fixture() {
       npmPkgs('');
-    }, /expect `username` to be non empty string/);
+    }
 
-    assert.throws(function fixture() {
-      npmPkgs('');
-    }, Error);
-
+    assert.throws(fixture, /expect `username` to be non empty string/);
+    assert.throws(fixture, Error);
     done();
   });
 
   it('should throw TypeError when `callback` is not a function', function(done) {
-    assert.throws(function fixture() {
+    function fixture() {
       npmPkgs('tunnckocore', [1, 2, 3]);
-    }, /to be function, but array given/);
+    }
 
     try {
-      npmPkgs('tunnckocore', [1, 2, 3]);
+      fixture();
     } catch(e) {
       is.object(e);
       is.number(e.line);
@@ -61,12 +57,10 @@ describe('npm-pkgs:', function() {
       assert.strictEqual(e.expected, 'function');
       assert.strictEqual(e.problem, 'actual !== expected');
       assert.strictEqual(/to be function, but array given/.test(e.message), true);
+      assert.throws(fixture, /to be function, but array given/);
+      assert.throws(fixture, TypeError);
+      done();
     }
-
-    assert.throws(function fixture() {
-      npmPkgs('tunnckocore', [1, 2, 3]);
-    }, TypeError);
-    done();
   });
 
   it('should work properly when existing user given and callback', function(done) {
