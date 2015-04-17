@@ -85,7 +85,7 @@ describe('npm-pkgs:', function() {
     this.timeout(30000);
 
     npmPkgs('fjk43hkjhhhhhhhhhhhhhhhkjgg3k4g234', function _cb(err, res) {
-      is.error(err);
+      is.object(err);
       is.number(err.code);
       is.undefined(res);
       assert.strictEqual(err instanceof Error, true);
