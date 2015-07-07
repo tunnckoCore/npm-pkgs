@@ -7,12 +7,10 @@
 
 'use strict';
 
-var is = require('assert-kindof');
-var got = require('got');
-var cheerio = require('cheerio');
+var JsonReq = require("jsonrequest");
+var SameTime = require("same-time");
 
-var url = 'https://www.npmjs.com/~';
-var selector = '.bullet-free';
+var url = 'https://www.npmjs.com/profile/__USER__/packages?offset=__OFFSET__';
 
 /**
  * List packages of the given [npmjs.com](http://npm.im) user
@@ -37,26 +35,35 @@ var selector = '.bullet-free';
  * @api public
  */
 module.exports = function npmPkgs(username, callback) {
-  is.string(username);
-  if (username.length === 0) {
-    throw new Error('[npm-pkgs] expect `username` to be non empty string');
+  function doReq(offset, cb) {
+    var reqUrl = url.replace("__USER__", username).replace("__OFFSET__", offset);
+    JsonReq(reqUrl, function (err, res) {
+      if (err) { return cb(err); }
+      if (!res.items) {
+        return cb(null, []);
+      }
+      cb(null, res);
+    });
   }
-  is.function(callback);
-
   var pkgs = [];
-
-  got.get(url + username, function _cb(err, res) {
-    if (!is.kindof.null(err)) {
-      callback(err);
-      return;
+  doReq(0, function (err, res) {
+    if (err) { return callback(err); }
+    if (res.items.length < res.count) {
+        pkgs = res.items;
+        return SameTime(new Array(Math.ceil(res.count / res.items.length) - 1).join(".").split("").map(function (c, i) {
+            return function (cb) {
+                doReq((i + 1) * 100, function (err, res) {
+                    if (err) { return cb(err); }
+                    pkgs = pkgs.concat(res.items);
+                    cb();
+                });
+            }
+        }), function (err) {
+            if (err) { return callback(err); }
+            callback(null, pkgs);
+        });
     }
 
-    var $ = cheerio.load(res);
-
-    $(selector).first().find('li a').each(function _defaultIterator() {
-      pkgs.push($(this).attr('href').trim().split('/package/')[1]);
-    });
-
-    callback(null, pkgs);
+    callback(null, res.items);
   });
 };
