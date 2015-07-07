@@ -8,11 +8,7 @@
     "test-cov": "istanbul cover _mocha",
     "test-travis": "istanbul cover _mocha --report lcovonly"
   },
-  "author": {
-    "name": "Charlike Mike Reagent",
-    "email": "mameto_100@mail.bg",
-    "url": "https://github.com/tunnckoCore"
-  },
+  "author": "Charlike Mike Reagent <mameto_100@mail.bg> (https://github.com/tunnckoCore)",
   "repository": {
     "type": "git",
     "url": "git://github.com/tunnckoCore/npm-pkgs.git"
@@ -29,17 +25,18 @@
     "user",
     "utils"
   ],
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/tunnckoCore/npm-pkgs/blob/master/license.md"
-  },
-  "dependencies": {
-    "assert-kindof": "~1.0.0",
-    "cheerio": "~0.19.0",
-    "got": "~2.7.0"
-  },
+  "license": "MIT",
   "devDependencies": {
     "istanbul-harmony": "~0.3.1",
     "mocha": "~2.2.1"
+  },
+  "bugs": {
+    "url": "https://github.com/tunnckoCore/npm-pkgs/issues"
+  },
+  "homepage": "https://github.com/tunnckoCore/npm-pkgs",
+  "main": "index.js",
+  "dependencies": {
+    "same-time": "^2.0.0",
+    "jsonrequest": "^3.0.0"
   }
 }
